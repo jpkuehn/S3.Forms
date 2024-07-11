@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\FormsExtensions\backoffice\SettingTypes\trackingfields.html" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="App_Plugins\UmbracoForms\backoffice\Form\" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="Umbraco.Forms.Core" Version="13.1.2" />
+    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="13.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\S3.Utilities\S3.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

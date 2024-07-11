@@ -1,0 +1,36 @@
+﻿<div ng-controller="S3TrackingFieldsController">
+
+    <div class="umb-forms-mappings" ng-if="trackingfields.length > 0">
+
+        <div class="umb-forms-mapping-header">
+            <div class="umb-forms-mapping-field">Form value</div>
+            <div class="umb-forms-mapping-remove -no-margin-right"></div>
+        </div>
+
+        <div class="umb-forms-mapping" ng-repeat="tf in trackingfields">
+
+            <div class="umb-forms-mapping-field">
+                <select class="-full-width"
+                        ng-options="field.id as field.value for field in fields"
+                        ng-model="tf.value"
+                        ng-change="stringifyValue()">
+                    <option value="">Select a field</option>
+                </select>
+            </div>
+
+            <div class="umb-forms-mapping-remove -no-margin-right">
+                <a href="" ng-click="deleteTrackingField($index)">
+                    <i class="icon-trash" aria-hidden="true"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <umb-button type="button"
+                action="addTrackingField()"
+                label="Add tracking field">
+    </umb-button>
+
+</div>

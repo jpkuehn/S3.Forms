@@ -11,6 +11,7 @@ using Umbraco.Forms.Core.Persistence.Dtos;
 using Umbraco.Forms.Web.Models.Backoffice;
 using Newtonsoft.Json;
 using S3.Forms.Models;
+using Umbraco.Forms.Core.Providers.Models;
 
 ///<summary>
 /// Purpose: For forms that should not store sensitive (personally identifiable) data, insert tracking data only. If no form fields 
@@ -21,8 +22,8 @@ using S3.Forms.Models;
 /// 2. Each workflow's "Include Sensitive Data" only prevents non-admins from seeing data that is stored. This setting has no impact on saving data. 
 ///    If Store Records is checked and Include Sensitive Data is unchecked, all data is still stored in db.
 /// 3. Enter tracking fields as semi-colon delimited string in the workflow's Tracking Fields. Only form fields will be saved.
+/// 4. Info for built-in setting types can be found at https://docs.umbraco.com/umbraco-forms/v/13.forms.latest-lts/developer/extending/adding-a-type/setting-types
 ///</summary>
-
 
 namespace S3.Forms.Workflows {
     public class InsertTrackingData : WorkflowType {
@@ -32,10 +33,12 @@ namespace S3.Forms.Workflows {
         private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly IWorkflowHelper _workflowHelper;
 
-        // TODO : pulls from /(Web)/App_Plugins/FormsExtensions/backoffice/Common/SettingTypes/trackingfields.html
-        //        based off FieldMapper (built-in Setting Type)
-        // Summary: gets or sets the form fields that will be saved in the database for tracking purposes
-        [Setting("Tracking Fields", Description = "Select the form fields that should be saved to database.", SupportsPlaceholders = true, View = "~/App_Plugins/FormsExtensions/backoffice/SettingTypes/trackingfields.html", DisplayOrder = 10)]
+        // Notes:
+        // 1. gets or sets the form fields that will be saved in the database for tracking purposes
+        // 2. based off FieldMapper (built-in Setting Type)
+        //    - Umbraco.Forms.StaticAssets/staticassets/backoffice/common/settingtypes/fieldmapper.html
+        //    
+        [Setting("Tracking Fields", Alias = "TrackingFields", Description = "Select the form fields that should be saved to database.", SupportsPlaceholders = true, View = "~/_content/S3.Forms.UI.Resources/App_Plugins/FormsExtensions/backoffice/SettingTypes/trackingfields.html", DisplayOrder = 10)]
         public virtual string TrackingFields { get; set; } = string.Empty;
 
         public InsertTrackingData(

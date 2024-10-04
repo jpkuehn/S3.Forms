@@ -7,19 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="App_Plugins\FormsExtensions\backoffice\SettingTypes\trackingfields.html" />
+    <None Remove="form-validation.js" />
   </ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="App_Plugins\UmbracoForms\backoffice\Form\" />
-	</ItemGroup>
-
-	<ItemGroup>
-    <PackageReference Include="Umbraco.Forms.Core" Version="13.1.2" />
-    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="13.1.2" />
+    <PackageReference Include="Umbraco.Forms.Core" Version="13.2.4" />
+    <PackageReference Include="Umbraco.Forms.Core.Providers" Version="13.2.4" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\S3.Forms.UI.Resources\S3.Forms.UI.Resources.csproj" />
     <ProjectReference Include="..\S3.Utilities\S3.Utilities.csproj" />
   </ItemGroup>
 
